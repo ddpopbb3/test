@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.OrdersMapper">
+  <resultMap id="BaseResultMap" type="com.spring.domain.Orders">
+    <id column="orderid" jdbcType="INTEGER" property="orderid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cost" jdbcType="DECIMAL" property="cost" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="statusid" jdbcType="DECIMAL" property="statusid" />
+    <result column="paywayid" jdbcType="DECIMAL" property="paywayid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    orderid, name, cost, userid, statusid, paywayid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from orders
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.spring.domain.Orders">
+    insert into orders (orderid, name, cost, 
+      userid, statusid, paywayid
+      )
+    values (#{orderid,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{cost,jdbcType=DECIMAL}, 
+      #{userid,jdbcType=INTEGER}, #{statusid,jdbcType=DECIMAL}, #{paywayid,jdbcType=DECIMAL}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spring.domain.Orders">
+    insert into orders
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        orderid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="cost != null">
+        cost,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="statusid != null">
+        statusid,
+      </if>
+      <if test="paywayid != null">
+        paywayid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="orderid != null">
+        #{orderid,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null">
+        #{statusid,jdbcType=DECIMAL},
+      </if>
+      <if test="paywayid != null">
+        #{paywayid,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring.domain.Orders">
+    update orders
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="cost != null">
+        cost = #{cost,jdbcType=DECIMAL},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="statusid != null">
+        statusid = #{statusid,jdbcType=DECIMAL},
+      </if>
+      <if test="paywayid != null">
+        paywayid = #{paywayid,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spring.domain.Orders">
+    update orders
+    set name = #{name,jdbcType=VARCHAR},
+      cost = #{cost,jdbcType=DECIMAL},
+      userid = #{userid,jdbcType=INTEGER},
+      statusid = #{statusid,jdbcType=DECIMAL},
+      paywayid = #{paywayid,jdbcType=DECIMAL}
+    where orderid = #{orderid,jdbcType=INTEGER}
+  </update>
+  <select id="count" parameterType="java.lang.Integer" resultType="java.lang.Integer">
+    select 
+    a.orderid
+    from (select <include refid="Base_Column_List" /> 
+    from orders as b where b.userid = #{userid,jdbcType=INTEGER}
+    order by orderid desc)as a limit 0,1
+  </select>
+  
+    <select id="getAll" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from orders
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+</mapper>

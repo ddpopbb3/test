@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.ProductMapper">
+  <resultMap id="BaseResultMap" type="com.spring.domain.Product">
+    <id column="productid" jdbcType="DECIMAL" property="productid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="basePrice" jdbcType="DECIMAL" property="baseprice" />
+    <result column="categoryid" jdbcType="DECIMAL" property="categoryid" />
+    <result column="author" jdbcType="VARCHAR" property="author" />
+    <result column="publish" jdbcType="VARCHAR" property="publish" />
+    <result column="pages" jdbcType="DECIMAL" property="pages" />
+    <result column="images" jdbcType="VARCHAR" property="images" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    productid, name, description, basePrice, categoryid, author, publish, pages, images
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from product
+    where productid = #{productid,jdbcType=DECIMAL}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from product
+    where productid = #{productid,jdbcType=DECIMAL}
+  </delete>
+  <insert id="insert" parameterType="com.spring.domain.Product">
+    insert into product (productid, name, description, 
+      basePrice, categoryid, author, 
+      publish, pages, images
+      )
+    values (#{productid,jdbcType=DECIMAL}, #{name,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{baseprice,jdbcType=DECIMAL}, #{categoryid,jdbcType=DECIMAL}, #{author,jdbcType=VARCHAR}, 
+      #{publish,jdbcType=VARCHAR}, #{pages,jdbcType=DECIMAL}, #{images,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spring.domain.Product">
+    insert into product
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="productid != null">
+        productid,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="baseprice != null">
+        basePrice,
+      </if>
+      <if test="categoryid != null">
+        categoryid,
+      </if>
+      <if test="author != null">
+        author,
+      </if>
+      <if test="publish != null">
+        publish,
+      </if>
+      <if test="pages != null">
+        pages,
+      </if>
+      <if test="images != null">
+        images,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="productid != null">
+        #{productid,jdbcType=DECIMAL},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="baseprice != null">
+        #{baseprice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryid != null">
+        #{categoryid,jdbcType=DECIMAL},
+      </if>
+      <if test="author != null">
+        #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null">
+        #{publish,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        #{pages,jdbcType=DECIMAL},
+      </if>
+      <if test="images != null">
+        #{images,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring.domain.Product">
+    update product
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="baseprice != null">
+        basePrice = #{baseprice,jdbcType=DECIMAL},
+      </if>
+      <if test="categoryid != null">
+        categoryid = #{categoryid,jdbcType=DECIMAL},
+      </if>
+      <if test="author != null">
+        author = #{author,jdbcType=VARCHAR},
+      </if>
+      <if test="publish != null">
+        publish = #{publish,jdbcType=VARCHAR},
+      </if>
+      <if test="pages != null">
+        pages = #{pages,jdbcType=DECIMAL},
+      </if>
+      <if test="images != null">
+        images = #{images,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where productid = #{productid,jdbcType=DECIMAL}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spring.domain.Product">
+    update product
+    set name = #{name,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      basePrice = #{baseprice,jdbcType=DECIMAL},
+      categoryid = #{categoryid,jdbcType=DECIMAL},
+      author = #{author,jdbcType=VARCHAR},
+      publish = #{publish,jdbcType=VARCHAR},
+      pages = #{pages,jdbcType=DECIMAL},
+      images = #{images,jdbcType=VARCHAR}
+    where productid = #{productid,jdbcType=DECIMAL}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap">
+  	SELECT * FROM product
+  </select>
+</mapper>

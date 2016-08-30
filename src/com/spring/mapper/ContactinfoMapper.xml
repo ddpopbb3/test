@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.dao.ContactinfoMapper">
+  <resultMap id="BaseResultMap" type="com.spring.domain.Contactinfo">
+    <id column="contactid" jdbcType="INTEGER" property="contactid" />
+    <result column="userid" jdbcType="INTEGER" property="userid" />
+    <result column="street1" jdbcType="VARCHAR" property="street1" />
+    <result column="street2" jdbcType="VARCHAR" property="street2" />
+    <result column="city" jdbcType="VARCHAR" property="city" />
+    <result column="province" jdbcType="VARCHAR" property="province" />
+    <result column="country" jdbcType="VARCHAR" property="country" />
+    <result column="zip" jdbcType="VARCHAR" property="zip" />
+    <result column="email" jdbcType="VARCHAR" property="email" />
+    <result column="homephone" jdbcType="VARCHAR" property="homephone" />
+    <result column="cellphone" jdbcType="VARCHAR" property="cellphone" />
+    <result column="officephone" jdbcType="VARCHAR" property="officephone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    contactid, userid, street1, street2, city, province, country, zip, email, homephone, 
+    cellphone, officephone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contactinfo
+    where contactid = #{contactid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from contactinfo
+    where contactid = #{contactid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.spring.domain.Contactinfo">
+    insert into contactinfo (contactid, userid, street1, 
+      street2, city, province, 
+      country, zip, email, 
+      homephone, cellphone, officephone
+      )
+    values (#{contactid,jdbcType=INTEGER}, #{userid,jdbcType=INTEGER}, #{street1,jdbcType=VARCHAR}, 
+      #{street2,jdbcType=VARCHAR}, #{city,jdbcType=VARCHAR}, #{province,jdbcType=VARCHAR}, 
+      #{country,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
+      #{homephone,jdbcType=VARCHAR}, #{cellphone,jdbcType=VARCHAR}, #{officephone,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.spring.domain.Contactinfo">
+    insert into contactinfo
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="contactid != null">
+        contactid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="street1 != null">
+        street1,
+      </if>
+      <if test="street2 != null">
+        street2,
+      </if>
+      <if test="city != null">
+        city,
+      </if>
+      <if test="province != null">
+        province,
+      </if>
+      <if test="country != null">
+        country,
+      </if>
+      <if test="zip != null">
+        zip,
+      </if>
+      <if test="email != null">
+        email,
+      </if>
+      <if test="homephone != null">
+        homephone,
+      </if>
+      <if test="cellphone != null">
+        cellphone,
+      </if>
+      <if test="officephone != null">
+        officephone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="contactid != null">
+        #{contactid,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="street1 != null">
+        #{street1,jdbcType=VARCHAR},
+      </if>
+      <if test="street2 != null">
+        #{street2,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null">
+        #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="homephone != null">
+        #{homephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null">
+        #{officephone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.spring.domain.Contactinfo">
+    update contactinfo
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="street1 != null">
+        street1 = #{street1,jdbcType=VARCHAR},
+      </if>
+      <if test="street2 != null">
+        street2 = #{street2,jdbcType=VARCHAR},
+      </if>
+      <if test="city != null">
+        city = #{city,jdbcType=VARCHAR},
+      </if>
+      <if test="province != null">
+        province = #{province,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null">
+        country = #{country,jdbcType=VARCHAR},
+      </if>
+      <if test="zip != null">
+        zip = #{zip,jdbcType=VARCHAR},
+      </if>
+      <if test="email != null">
+        email = #{email,jdbcType=VARCHAR},
+      </if>
+      <if test="homephone != null">
+        homephone = #{homephone,jdbcType=VARCHAR},
+      </if>
+      <if test="cellphone != null">
+        cellphone = #{cellphone,jdbcType=VARCHAR},
+      </if>
+      <if test="officephone != null">
+        officephone = #{officephone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where contactid = #{contactid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.spring.domain.Contactinfo">
+    update contactinfo
+    set userid = #{userid,jdbcType=INTEGER},
+      street1 = #{street1,jdbcType=VARCHAR},
+      street2 = #{street2,jdbcType=VARCHAR},
+      city = #{city,jdbcType=VARCHAR},
+      province = #{province,jdbcType=VARCHAR},
+      country = #{country,jdbcType=VARCHAR},
+      zip = #{zip,jdbcType=VARCHAR},
+      email = #{email,jdbcType=VARCHAR},
+      homephone = #{homephone,jdbcType=VARCHAR},
+      cellphone = #{cellphone,jdbcType=VARCHAR},
+      officephone = #{officephone,jdbcType=VARCHAR}
+    where contactid = #{contactid,jdbcType=INTEGER}
+  </update>
+  <select id="getAll" resultMap="BaseResultMap">
+  	SELECT * FROM contactinfo
+  </select>
+  <select id="selectByUserid" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from contactinfo
+    where userid = #{userid,jdbcType=INTEGER}
+  </select>
+</mapper>
