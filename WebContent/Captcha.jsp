@@ -13,7 +13,15 @@
 <h1></h1>
 <h2></h2>
 <span>
-<img />
+<img id="img1" src="data:image/jpg;base64,"/>
+
+<form action="app.do" method="post">
+<input type  = "text" name = "name"/>
+<input type  = "password" name = "password"/>
+<input type  = "text" name = "captcha"/>
+<input type  = "submit" value = "gg"/>
+</form>
+
 </span>
 <div id = "info"></div>
 </body>  
@@ -23,14 +31,15 @@ $(function(){
     	
 	$.ajax({
 		type : "GET",
-		url : "jss.do",
+		url : "Captcha2.do",
 		dataType:"json",
 		success:function(data){
 			alert("data"+data);
 			$("h1").text(data.lala);
 			$("h2").text(data.list[0].name);
 			$("#info").text(data.list[0].password);
-			$("img").attr("src",data.lili);
+			var img = document.getElementById("img1");
+	        img1.src = "data:image/jpg;base64,"+data.lilia;
 		},
 		errro:function(){
 			alert("aaa");

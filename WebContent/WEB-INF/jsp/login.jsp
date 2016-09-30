@@ -9,7 +9,6 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <meta name="description" content="达内电子商务门户">
 <link href="<%=basePath%>/css/tarena.css" rel=stylesheet>
-
 </head>
 	<body topmargin="0" leftmargin="0" rightmargin="0" bottommargin="0">
 <!-- Header Start -->
@@ -69,54 +68,31 @@
 						<b>用户登陆</b>
 					</font>
 				</td>
-				
 			</tr>
 			<tr>
 				<td class=tablebody1 valign="middle" height="20" width="30%">
 					请输入您的用户名: 
-					
 				</td>
 				<td class=tablebody1 valign="middle" height="20" width="80%">
-					
 						<input type="text"  id ="name" name="name">&nbsp;<a href="<%=basePath%>/userRegister.do">注册新用户</a>
-				
-				
-				
 				</td>
-    
 			</tr>   
 			<tr>
 				<td class=tablebody1 valign="middle" width="30%" height="25">
      					 请输入您的密码:
 				 </td>
 				<td class=tablebody1 valign="middle" width="80%">
-		
 						<input type=password  name="password">
 					<c:if test="${!empty error}">
 						<font color="red"><c:out value="${error}" /></font>
 					</c:if>
-					
-				
-				
 				</td>
-    
 			</tr>   
-			
-			
 			<tr>
 				<td colspan="4" class=tablebody2 align="center" valign="middle" width="60%">
-				
-				
-						<input  type=submit value=登陆 onclick="testContent(name)">
-					
-     					
+						<input  type=submit value=登陆 >
 				 </td>
-				
-    
 			</tr>   
-			
-			
-
 		</table>
 		</form>
 		<br>
