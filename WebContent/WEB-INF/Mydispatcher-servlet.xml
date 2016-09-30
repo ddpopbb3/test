@@ -19,8 +19,8 @@
 			<value>org.springframework.web.servlet.view.JstlView</value>
 		</property>
 		<property name="prefix">
-			<!-- <value>/WEB-INF/jsp/</value> -->
-			<value>/</value>
+			<value>/WEB-INF/jsp/</value>
+			<!-- <value>/</value> -->
 		</property>
 		<property name="suffix">
 			<value>.jsp</value>

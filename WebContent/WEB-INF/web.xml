@@ -31,8 +31,7 @@
 		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
 	</listener>
 	<listener>
-		<listener-class>
-			org.springframework.web.context.ContextCleanupListener</listener-class>
+		<listener-class>org.springframework.web.context.ContextCleanupListener</listener-class>
 	</listener>
 	<servlet>
 		<servlet-name>Mydispatcher</servlet-name>
@@ -43,4 +42,5 @@
 		<servlet-name>Mydispatcher</servlet-name>
 		<url-pattern>*.do</url-pattern> 
 	</servlet-mapping>
+
 </web-app>
